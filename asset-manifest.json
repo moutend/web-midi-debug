@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/web-midi-debug/static/js/main.a1d3e162.chunk.js",
+    "main.js.map": "/web-midi-debug/static/js/main.a1d3e162.chunk.js.map",
+    "runtime-main.js": "/web-midi-debug/static/js/runtime-main.0cefebdb.js",
+    "runtime-main.js.map": "/web-midi-debug/static/js/runtime-main.0cefebdb.js.map",
+    "static/js/2.71a595e6.chunk.js": "/web-midi-debug/static/js/2.71a595e6.chunk.js",
+    "static/js/2.71a595e6.chunk.js.map": "/web-midi-debug/static/js/2.71a595e6.chunk.js.map",
+    "index.html": "/web-midi-debug/index.html",
+    "static/js/2.71a595e6.chunk.js.LICENSE.txt": "/web-midi-debug/static/js/2.71a595e6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0cefebdb.js",
+    "static/js/2.71a595e6.chunk.js",
+    "static/js/main.a1d3e162.chunk.js"
+  ]
+}
