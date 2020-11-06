@@ -8,7 +8,7 @@ export default class MIDIManager {
     this.setHistory(this.events);
   }
   onEvent(event: any) {
-    this.events.push(event.data.join(", "));
+    this.events.push(event.data.join("\t"));
 
     this.setHistory(this.events);
   }
@@ -32,6 +32,9 @@ export default class MIDIManager {
     if (Object.keys(this.devices).length === 0) {
       this.events.push("No MIDI devices");
       this.setHistory(this.events);
+    } else {
+      this.events.push("");
+      this.events.push("Event\tVal. 1\tVal. 2")
     }
   }
   constructor(setHistory: (v: string[]) => void) {

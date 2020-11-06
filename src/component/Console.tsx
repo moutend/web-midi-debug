@@ -8,6 +8,7 @@ const useStyles = makeStyles({
     padding: "8pt 16pt",
     color: "#EEE",
     backgroundColor: "#333",
+    fontFamily: "Monospace",
     fontSize: 16
   },
   label: {},
