@@ -13,6 +13,11 @@ export default function App() {
     let midiManager = new MIDIManager(setHistory);
 
     window.document.addEventListener("keydown", (event: any) => {
+      // For Windows
+      if (!event.altKey || event.key !== "k") {
+        return;
+      }
+      // For macOS
       if (!event.ctrlKey || event.key !== "k") {
         return
       }
@@ -27,7 +32,7 @@ export default function App() {
     <div>
       <Container maxWidth="sm">
         <h1>Web MIDI Debug</h1>
-        <p>Press <code>Ctrl-K</code> to clear outputs.</p>
+        <p>Press <code>Ctrl-K</code> or <code>Alt-K</code> to clear outputs.</p>
         <Console history={history}/>
         <p style={{textAlign: "center"}}><a href="https://github.com/moutend/web-midi-debug">View on GitHub</a></p>
       </Container>
