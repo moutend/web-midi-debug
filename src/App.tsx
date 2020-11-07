@@ -13,12 +13,10 @@ export default function App() {
     let midiManager = new MIDIManager(setHistory);
 
     window.document.addEventListener("keydown", (event: any) => {
-      // For Windows
-      if (!event.altKey || event.key !== "k") {
-        return;
-      }
-      // For macOS
-      if (!event.ctrlKey || event.key !== "k") {
+      const c1 = event.altKey && event.key === "k";
+      const c2 = event.ctrlKey && event.key === "k";
+
+      if (!(c1 || c2)) {
         return
       }
 
