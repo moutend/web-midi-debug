@@ -6,7 +6,7 @@ import Console from './component/Console';
 import MIDIManager from './logic/MIDIManager';
 
 export default function App() {
-  const [history, setHistory] = useState([] as string[]) as [string[], (v: string[]) => void];
+  const [history, setHistory] = useState<string[]>([])
   const [isMIDIManagerInitialized, setIsMIDIManagerInitialized] = useState(false);
 
   useEffect(() => {

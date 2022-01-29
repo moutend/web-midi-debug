@@ -19,14 +19,14 @@ export default class MIDIManager {
       "The latest Google Chrome is a recommended browser.",
     ]);
   }
-  onSuccess(data: any) {
+  onSuccess(data: WebMidi.MIDIAccess) {
     const iterator = data.inputs.values();
 
     for (let input = iterator.next(); !input.done; input = iterator.next()) {
     this.events.push(`${input.value.name} ... connected`);
     this.setHistory(this.events);
 
-      this.devices[input.value.name] = input.value;
+      this.devices[input.value.name!] = input.value;
       input.value.addEventListener("midimessage", this.onEvent.bind(this), false);
     }
     if (Object.keys(this.devices).length === 0) {
@@ -40,8 +40,8 @@ export default class MIDIManager {
   constructor(setHistory: (v: string[]) => void) {
     this.setHistory = setHistory;
 
-    if ((window.navigator as any).requestMIDIAccess) {
-      (window.navigator as any)
+    if (window.navigator.requestMIDIAccess) {
+      window.navigator
       .requestMIDIAccess()
       .then(this.onSuccess.bind(this), this.onError.bind(this));
     } else {

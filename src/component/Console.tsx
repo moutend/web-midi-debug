@@ -1,33 +1,56 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from '@material-ui/core/TextField';
+import Card from "@material-ui/core/Card";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles({
   root: {
-    padding: "8pt 16pt",
     color: "#EEE",
     backgroundColor: "#333",
-    fontFamily: "Monospace",
-    fontSize: 16
+    fontFamily: "monospace",
   },
-  label: {},
+  scroll: {
+    height: 375,
+    padding: "8pt 16pt",
+    overflow: "scroll",
+    whiteSpace: "pre",
+  },
 });
 
 interface ConsoleProps {
   history: string[];
 }
 
-export default function Console(props: ConsoleProps) {
+export default function Console({ history }: ConsoleProps) {
   const classes = useStyles();
+  const [follow, setFollow] = useState(true);
+
+  const bottom = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (follow) bottom.current?.scrollIntoView();
+  }, [history]);
 
   return (
-    <div>
-      <TextField
-        inputProps={{className: classes.root}} InputLabelProps={{className: classes.root}}
-        multiline={true} rows={16} fullWidth={true}
-        value={props.history.join("\n")}
+    <>
+      <Card className={classes.root}>
+        <div className={classes.scroll}>
+          {history.join("\n")}
+          <div ref={bottom} />
+        </div>
+      </Card>
+
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={follow}
+            onChange={(_, checked) => setFollow(checked)}
+          />
+        }
+        label="Follow output"
       />
-    </div>
+    </>
   );
 }
