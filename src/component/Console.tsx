@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from '@material-ui/core/TextField';
+import Card from "@material-ui/core/Card";
 
 const useStyles = makeStyles({
   root: {
     padding: "8pt 16pt",
     color: "#EEE",
     backgroundColor: "#333",
-    fontFamily: "Monospace",
-    fontSize: 16
+    fontFamily: "monospace",
+    height: "23em",
+    overflow: "scroll",
+    whiteSpace: "pre",
   },
-  label: {},
 });
 
 interface ConsoleProps {
@@ -21,13 +22,5 @@ interface ConsoleProps {
 export default function Console(props: ConsoleProps) {
   const classes = useStyles();
 
-  return (
-    <div>
-      <TextField
-        inputProps={{className: classes.root}} InputLabelProps={{className: classes.root}}
-        multiline={true} rows={16} fullWidth={true}
-        value={props.history.join("\n")}
-      />
-    </div>
-  );
+  return <Card className={classes.root}>{props.history.join("\n")}</Card>;
 }
